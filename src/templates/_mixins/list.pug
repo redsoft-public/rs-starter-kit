@@ -1,0 +1,28 @@
+- var staticPath = "./assets/";
+- var imgPath = `${staticPath}images/`;
+
+include ../components/header/header
+include ../components/footer/footer
+include ../components/popups/popups
+include ../components/ui__kit/ui__kit
+
+
+include ../blocks/breadcrumb/breadcrumb
+include ../blocks/btn/btn
+include ../blocks/icon/icon
+include ../blocks/carousel/carousel
+include ../blocks/form__field/form__field
+include ../blocks/hamburger/hamburger
+
+
+mixin title(...titleParts)
+	- var t = "Your Website Name"
+	each titlePart in titleParts.reverse()
+		- t = titlePart + " / " + t
+	title #{t}
+
+mixin statcss(href)
+	link(rel="stylesheet" href=href)
+
+mixin statjs(href)
+	script(src=href)

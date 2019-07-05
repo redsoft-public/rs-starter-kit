@@ -1,0 +1,15 @@
+include ../_mixins/list
+include ./bemto/bemto
+
+doctype html
+html(lang="ru")
+	include ../_shared/head
+	block head
+	body
+		#main
+			.page-container
+				+header()
+				block content
+			+footer()
+		.g-hide
+			+popups()

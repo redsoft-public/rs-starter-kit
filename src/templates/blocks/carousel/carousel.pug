@@ -1,0 +1,15 @@
+mixin carousel(slides, type = 'banner')
+	- slides = slides || $data.slides
+	.carousel(class=`carousel__${type}`)&attributes(attributes)
+		.swiper-container
+			.swiper-wrapper
+				each slide in slides
+					if (type == 'banner')
+						.swiper-slide.js-scroll-zoom(style=`${slide.img ? `background-image: url(./assets/images/temp/${slide.img}`: ``}`)
+							.g-grid
+								.carousel__inner
+									h1=slide.title
+									p=slide.subtitle
+			.carousel__navs.g-grid
+				.swiper-button-prev
+				.swiper-button-next

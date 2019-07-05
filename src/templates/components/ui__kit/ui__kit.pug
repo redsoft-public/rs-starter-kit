@@ -1,0 +1,110 @@
+mixin ui__kit()
+	.container
+		.b-component.b-dynamic
+			h2.h2 Динамическая подгрузка JS/CSS файлов (смотрим вкладку 'network')
+			+btn('fill')#d-js Загрузить JS-файл
+			+btn('fill')#d-css Загрузить CSS-файл
+		.b-buttons.b-component
+			h2.h2 1. Buttons
+				.anchor#b-buttons
+			+btn btn-primary
+			+btn('fill') btn-fill
+			+btn('border') btn-border
+			+btn('fill','submit', false, 'btn-submit')
+			+btn('disabled') btn-disabled
+		.b-forms.b-component
+			h2.h2 2. Form
+				.anchor#b-forms
+			form.form
+				+formField('text', 'ФИО')(
+					data-msg="Поле ФИО обязательно для заполнения",
+					data-msg-minlength="Пожалуйста, введите не меньше 3 символов.",
+					minlength="3",
+					required
+				)
+				+formField('tel', 'Телефон')(name="phoneRU" required).tel-input
+				+formField('text', 'Дата')(name="date", required).date-input
+				+formField('text', 'E-mail')(name="email", required).email-input
+				+formField('text', 'Банковская карта')(name="creditcard", required).card-input
+				+formField('password', 'Пароль')(
+					name="password",
+					id="password",
+					minlength="6",
+					password="true",
+					required
+				)
+				+formField('password', 'Повторите пароль')(
+					name="password-confirm",
+					id="password-confirm",
+					password="true",
+					equalTo="#password",
+					required
+				)
+				+formField('select', 'Выберите значение', $data.selectOptions)(
+					name="select",
+					data-msg="Выберите один из вариантов"
+					required
+				)
+				+formField('checkbox', 'Чекбокс 1')(name="checkbox", id="checkbox-form", required)
+				.form__radios.js-form__radios
+					+formField('radio', 'Радио-баттон 1')(name="radiost", id="radio-form-1", required)
+					+formField('radio', 'Радио-баттон 2')(name="radiost", id="radio-form-2", required)
+				.form__footer
+					+btn('fill','submit', false, 'Отправить')
+
+		.b-carousel.b-component
+			h2.h2 3. Carousel
+				.anchor#b-carousel
+			+carousel()
+		.b-typographie.b-component
+			h2.h2 4. Titles
+				.anchor#b-typographie
+				h1.h1 Redsoft h1
+				h2.h2 Redsoft h2
+				h3.h3 Redsoft h3
+				h4.h4 Redsoft h4
+				h5.h5 Redsoft h5
+				h6.h6 Redsoft h6
+		.b-component
+			h2.h2 5. Checkbox, Radio-input
+				.anchor#b-checkboxes
+			.b-boxes
+				.b-boxes__block
+					.b-boxes__input
+						+checkbox("Чекбокс 1")(id="checkbox")
+					.b-boxes__input
+						+checkbox("Чекбокс 2")(id="checkbox1")
+				.b-boxes__block
+					.b-boxes__input
+						+radio("Радиокнопка 1")(name="radios", id="radio1")
+					.b-boxes__input
+						+radio("Радиокнопка 2")(name="radios", id="radio2")
+		.b-range-slider.b-component
+			h2.h2 6. Range-slider
+				.anchor#b-range-slider
+			.range-slider
+		.b-component
+			h2.h2 7. Hamburger
+				.anchor#hamburger
+			+hamburger
+		.b-component
+			h2.h2 8. Popups
+				.anchor#popups
+			+btn-popup('fill', '#contact') Open popup
+		.b-component.b-backgrounds
+			h2.h2 9. Images
+			.b-backgrounds__container
+				.b-backgrounds__item
+					h4 #[b SVG icon from sprite] (background)
+					div
+				.b-backgrounds__item
+					h4 #[b JPG] (background)
+					div
+				.b-backgrounds__item
+					h4 #[b SVG] (from IMG tag)
+					+icon('null')
+				.b-backgrounds__item
+					h4 #[b JPG] (from IMG tag)
+					div
+						+img('banner.jpg', 'Redsoft-ALT')
+

@@ -1,0 +1,6 @@
+mixin icon(name='null')
+    .icon
+        svg.icon__svg&attributes(attributes)
+            use(xlink:href=`${imgPath}svg-sprite/sprite.svg#${name}`)
+mixin img(name='null', alt)
+    img(src=`./assets/images/${name}` alt=alt)&attributes(attributes)

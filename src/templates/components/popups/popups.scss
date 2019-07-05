@@ -1,0 +1,20 @@
+.popup {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	width: 100%;
+	background-color: $clr_white;
+	color: $clr_dark;
+	margin: auto;
+	padding: 40px 20px;
+
+	&__container {
+		display: none;
+	}
+
+	&__header {
+		font-size: 25px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+}

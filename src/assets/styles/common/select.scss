@@ -1,0 +1,59 @@
+.select.nice-select {
+	height: 55px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	border-color: rgba($clr_main, 1);
+	border-radius: $br_r;
+	font-family: $ff_bold;
+	font-size: $fsz_h6;
+	color: $clr_black;
+	float: none;
+
+	&:after {
+		border-color: rgba($clr_main, 1);
+		width: 10px;
+		height: 10px;
+		border-bottom-width: 1px;
+		border-right-width: 1px;
+		top: calc(50% - 3px);
+	}
+
+	&:hover {
+		opacity: 1;
+		border-color: rgba($clr_main, 1);
+	}
+
+	.list {
+		top: calc(100% - 3px);
+		box-shadow: none;
+		width: calc(100% + 2px);
+		margin-left: -1px;
+
+		&:hover {
+			.option {
+				background-color: rgba($clr_main_dark, .85) !important;
+
+				&:not(:hover) {
+					background-color: $clr_main_dark !important;
+				}
+			}
+		}
+	}
+
+	.option {
+		background-color: $clr_main_dark;
+		border-radius: $br_r;
+		border: 1px solid rgba($clr_main, 1);
+		color: $clr_white;
+
+		&.selected {
+			display: none;
+		}
+	}
+}
+
+.nice-select .option.selected.focus {
+	font-weight: normal;
+	color: $clr_main;
+}

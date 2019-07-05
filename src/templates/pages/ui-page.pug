@@ -1,0 +1,49 @@
+include ../_layouts/bemto/bemto
+include ../_mixins/list
+
+doctype html
+html(lang="ru")
+	include ../_shared/head
+	block head
+	body
+		#main.ui-kit
+			.page-container
+				header.header
+					.container
+						.header__inner
+							.header__menu
+								.menu-trigger Menu
+								.menu
+									.menu__list
+										.menu__item
+											a.menu__link(href='#b-buttons') Buttons
+										.menu__item
+											a.menu__link(href='#b-forms') Forms
+										.menu__item
+											a.menu__link(href='#b-carousel') Carousel
+										.menu__item
+											a.menu__link(href='#b-typographie') Typograhpie
+										.menu__item
+											a.menu__link(href='#b-checkboxes') Checkboxes
+										.menu__item
+											a.menu__link(href='#b-range-slider') Range Slider
+										.menu__item
+											a.menu__link(href='#hamburger') Hamburger
+										.menu__item
+											a.menu__link(href='#popups') Popups
+							.header__logo
+								.container
+									h1.h1 Redsoft UI Kit
+				.main-content
+					.container
+						+ui__kit()
+				.g-hide
+					+popups()
+				footer.footer
+					.footer__inner
+						.container
+							a(target="_blank" href="https://redsoft.ru" class="redsoft")
+								.redsoft__inner
+									span.redsoft__img
+										+icon('logo')
+									span.redsoft__caption Разработка сайта #[br] Redsoft

@@ -1,0 +1,173 @@
+.ui-kit {
+	.header {
+		opacity: 1;
+		background-color: $clr_main;
+		padding: 15px 0;
+		z-index: 10;
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+
+		&__menu {
+			position: relative;
+
+			&:hover {
+				.menu {
+					opacity: 1;
+					left: 0;
+				}
+			}
+		}
+
+		.hamburger {
+			.line {
+				background-color: $clr_white;
+			}
+		}
+
+		&__inner {
+			display: flex;
+			align-items: center;
+		}
+
+		&__logo {
+			color: $clr_white;
+
+			h1 {
+				margin-bottom: 0;
+				font-weight: normal;
+			}
+		}
+	}
+
+	.menu {
+		position: absolute;
+		top: 61px;
+		min-width: 150px;
+		border-left: 1px solid $clr_main;
+		border-right: 1px solid $clr_main;
+		border-bottom: 1px solid $clr_main;
+		background-color: $clr_white;
+		opacity: 0;
+		left: 9999px;
+		transition: opacity 0.2s;
+
+		&__link {
+			color: $clr_main;
+			display: block;
+			text-decoration: none;
+			transition: all 0.2s;
+			padding: 11px 15px;
+
+			&:hover {
+				background-color: $clr_main;
+				color: $clr_white;
+			}
+		}
+
+		&:after {
+			content: "";
+			position: absolute;
+			width: 100%;
+			height: 22px;
+			top: -22px;
+			left: 0;
+		}
+
+		&-trigger {
+			border: 2px solid $clr_white;
+			color: $clr_white;
+			font-size: 20px;
+			cursor: pointer;
+			z-index: 11;
+			position: relative;
+			padding: 5px 8px;
+		}
+	}
+
+	.b-forms {
+		max-width: 100%;
+	}
+
+	.main-content {
+		margin-top: 126px;
+	}
+
+	.range-slider {
+		.noUi-connect {
+			background: $clr_main;
+		}
+	}
+
+	.b-component {
+		margin-bottom: em(6);
+		border-bottom: 1px solid $clr_main;
+		padding-bottom: em(6);
+
+		h3 {
+			position: relative;
+
+			.anchor {
+				position: absolute;
+				top: -100px;
+			}
+		}
+	}
+
+	.b-backgrounds {
+		&__container {
+			display: flex;
+		}
+
+		&__item {
+			margin-right: 20px;
+
+			div {
+				width: 250px;
+				height: 250px;
+				background-repeat: no-repeat;
+				background-size: contain;
+				display: flex;
+				align-items: flex-end;
+			}
+
+			&:nth-child(1) {
+				div {
+					background-image: url('../../assets/images/svg-icons/null.svg');
+				}
+			}
+
+			&:nth-child(2) {
+				div {
+					background-image: url('../../assets/images/banner.jpg');
+					background-size: cover;
+				}
+			}
+
+			&:nth-child(4) {
+				div {
+					width: 250px;
+					overflow: hidden;
+				}
+				
+				img {
+					height: 250px;
+					width: auto;
+				}
+			}
+		}
+	}
+
+	.b-boxes {
+		display: flex;
+
+		&__block {
+			flex-basis: 50%;
+		}
+
+		&__input {
+			margin-bottom: 5px;
+		}
+	}
+}
