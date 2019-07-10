@@ -24,7 +24,7 @@ function imgToSvg() {
 			}
 			// Add replaced image's classes to the new SVG
 			if (typeof imgClass !== 'undefined') {
-				$svg = $svg.attr('class', imgClass + 'replaced-svg');
+				$svg = $svg.attr('class', imgClass + ' replaced-svg');
 			}
 
 			// Remove any invalid XML tags as per http://validator.w3.org
