@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{"0ByC":function(n,t,o){"use strict";function u(){alert("Воу!")}o.r(t),o.d(t,"default",function(){return u})}}]);

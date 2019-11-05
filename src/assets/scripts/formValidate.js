@@ -1,53 +1,56 @@
-import vData from './formValidateMethods.js';
+import vData from './formValidateMethods';
 
 export default function formValidate() {
-	let { formClasses, btnSubmitDisabled, validResultClasses, checkFormOnInit } = vData;
+	const {
+		formClasses, btnSubmitDisabled, validResultClasses, checkFormOnInit,
+	} = vData;
 
 	$(formClasses.name).validate({
 		rules: {
 			phoneRU: {
-				phoneValid: true
+				phoneValid: true,
 			},
 			date: {
-				dateValid: true
+				dateValid: true,
 			},
 			email: {
-				emailValid: true
+				emailValid: true,
 			},
 			select: {
-				valueNotEquals: true
+				valueNotEquals: true,
 			},
 			creditcard: {
-				vmcardsonly: true
-			}
+				vmcardsonly: true,
+			},
 		},
-		onkeyup: function(element, event) {
+		onkeyup(element) {
 			btnSubmitDisabled.apply(this, [element, formClasses]);
 		},
-		onclick: function(element, event) {
+		onclick(element) {
 			btnSubmitDisabled.apply(this, [element, formClasses]);
 		},
-		errorPlacement: function(error, element) {
-			let type = $(element).attr('type');
+		errorPlacement(error, element) {
+			const type = $(element).attr('type');
 
 			switch (type) {
-				case 'radio':
-					error.appendTo($(element).parents(formClasses.fieldRadio));
-					break;
-				default:
-					error.appendTo($(element).parent(formClasses.field));
-					break;
+			case 'radio':
+				error.appendTo($(element).parents(formClasses.fieldRadio));
+				break;
+			default:
+				error.appendTo($(element).parent(formClasses.field));
+				break;
 			}
 		},
-		highlight: function(element) {
+		highlight(element) {
 			validResultClasses.apply(this, [element, 'highlight', formClasses]);
 		},
-		unhighlight: function(element) {
+		unhighlight(element) {
 			validResultClasses.apply(this, [element, 'unhighlight', formClasses]);
 		},
-		submitHandler: function(form) {
+		submitHandler() {
+			// eslint-disable-next-line no-alert
 			alert('Форма успешно отправлена!');
-		}
+		},
 	});
 
 	checkFormOnInit.apply(vData);

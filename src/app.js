@@ -1,3 +1,6 @@
+import svg4everybody from 'svg4everybody';
+import noUiSlider from 'nouislider';
+
 // Load app style
 import '@Styles/app.scss';
 
@@ -13,13 +16,11 @@ import formValidate from '@Scripts/formValidate';
 import carousel from '@Blocks/carousel/carousel';
 import hamburger from '@Blocks/hamburger/hamburger';
 
-import svg4everybody from 'svg4everybody';
-import noUiSlider from 'nouislider';
 
 // Пример разбиения файлов на отдельные чанки
-const Chunks = {
+const chunks = {
 	styles: () => importName('@Styles/dynamic/dynamic.scss', 'chunk.dynamic-scss'), // путь к файлу или массив, название чанка
-	script: () => importName('@Scripts/dynamic.js', 'chunk.dynamic-js')
+	script: () => importName('@Scripts/dynamic.js', 'chunk.dynamic-js'),
 };
 
 const app = {
@@ -28,10 +29,13 @@ const app = {
 	},
 	bindEvents: () => {
 		// Динамическая подрузка чанков
-		$('#d-js').one('click', () => Chunks.script().then((data) => data.default()));
-		$('#d-css').one('click', () => Chunks.styles());
+		$('#d-js')
+			.one('click', () => chunks.script()
+				.then((data) => data.default()));
+		$('#d-css')
+			.one('click', () => chunks.styles());
 
-		let initData = {
+		const initData = {
 			mfpOpt: {
 				type: 'inline',
 				fixedContentPos: false,
@@ -41,52 +45,66 @@ const app = {
 				preloader: false,
 				midClick: true,
 				removalDelay: 300,
-				mainClass: 'my-mfp-slide-bottom'
+				mainClass: 'my-mfp-slide-bottom',
 			},
 			masks: {
 				tel: '+7 (999) 999-99-99',
 				date: '99.99.9999',
 				email: 'email',
-				card: [ '9{4} 9{4} 9{4} 9{4}', { placeholder: '∗' } ]
+				card: ['9{4} 9{4} 9{4} 9{4}', { placeholder: '∗' }],
 			},
-			isMobile: function() {
+			isMobile() {
 				return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 			},
-			isIE: function() {
+			isIE() {
 				return (
 					navigator.userAgent.indexOf('MSIE ') > -1 || navigator.userAgent.indexOf('Trident/') > -1
 				);
 			},
-			initMasks: function() {
-				Object.keys(this.masks).map((maskName, index) => {
-					let maskPlaceholder = this.masks[maskName];
+			initMasks() {
+				Object.keys(this.masks)
+					.forEach((maskName) => {
+						const maskPlaceholder = this.masks[maskName];
 
-					if (typeof maskPlaceholder == 'object') {
-						$(`input.${maskName}-input`).inputmask(...maskPlaceholder);
-					} else {
-						$(`input.${maskName}-input`).inputmask(maskPlaceholder);
-					}
-				});
+						if (typeof maskPlaceholder === 'object') {
+							$(`input.${maskName}-input`)
+								.inputmask(...maskPlaceholder);
+						} else {
+							$(`input.${maskName}-input`)
+								.inputmask(maskPlaceholder);
+						}
+					});
 			},
-			initLibs: function() {
-				$('select').niceSelect();
-				$('input[type="number"]').niceNumber();
-				$('.js-popup').magnificPopup(this.mfpOpt);
-				$('.js-popup-close').click(function() { $.magnificPopup.close(); });
-				$('.scrollbar-outer').overlayScrollbars({});
+			initLibs() {
+				const haveCustomRangeSliders = document.querySelector('.range-slider');
+
+				$('select')
+					.niceSelect();
+				$('input[type="number"]')
+					.niceNumber();
+				$('.js-popup')
+					.magnificPopup(this.mfpOpt);
+				$('.js-popup-close')
+					.click(() => {
+						$.magnificPopup.close();
+					});
+				$('.scrollbar-outer')
+					.overlayScrollbars({});
 				this.initMasks();
 
-				document.querySelector('.range-slider') && noUiSlider.create(document.querySelector('.range-slider'), {
-					start: [ 20, 80 ],
-					connect: true,
-					behaviour: 'tap',
-					step: 10,
-					range: {
-						min: 0,
-						max: 100
-					}
-				});
-			}
+				if (haveCustomRangeSliders) {
+					noUiSlider.create(document.querySelector('.range-slider'), {
+						start: [20, 80],
+						connect: true,
+						behaviour: 'tap',
+						step: 10,
+						range: {
+							min: 0,
+							max: 100,
+						},
+					});
+				}
+			},
 		};
 
 		initData.initLibs();
@@ -97,15 +115,23 @@ const app = {
 		formValidate();
 		hamburger();
 
-		if (initData.isIE()) $('body').addClass('ie');
-		if (initData.isMobile()) $('body').addClass('touch');
-	}
+		if (initData.isIE()) {
+			$('body')
+				.addClass('ie');
+		}
+		if (initData.isMobile()) {
+			$('body')
+				.addClass('touch');
+		}
+	},
 };
 
-$(document).ready(app.load);
+$(document)
+	.ready(app.load);
 
 const requireAll = (r) => {
-	r.keys().forEach(r);
+	r.keys()
+		.forEach(r);
 };
 
 requireAll(require.context('./assets/images/svg-icons/', true, /\.svg$/));

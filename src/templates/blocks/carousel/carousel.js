@@ -1,8 +1,10 @@
-export default function carousel() {
-	let slidersCategories = [];
-	$('.carousel .swiper-container').each(function() {
-		let t = $(this);
-		let params = t.parent().data('swiper');
+import Swiper from 'swiper';
+
+export default function () {
+	const slidersCategories = [];
+	$('.carousel .swiper-container').each(function initCarouselHandler() {
+		const t = $(this);
+		const params = t.parent().data('swiper');
 		let dataParams = {
 			effect: 'slide',
 			speed: 800,
@@ -11,15 +13,15 @@ export default function carousel() {
 			loop: false,
 			navigation: {
 				nextEl: t.find('.swiper-button-next')[0],
-				prevEl: t.find('.swiper-button-prev')[0]
+				prevEl: t.find('.swiper-button-prev')[0],
 			},
-			autoHeight: true
+			autoHeight: true,
 		};
 
 		if (params) {
 			dataParams = Object.assign(dataParams, params);
 		}
-		let categoriesSwiper = new Swiper(t[0], dataParams);
+		const categoriesSwiper = new Swiper(t[0], dataParams);
 		slidersCategories.push(categoriesSwiper);
 	});
 }
