@@ -1,88 +1,88 @@
 $ff_main: 'CirceRegular', Helvetica, Arial, sans-serif;
 $ff_bold: 'CirceBold', Helvetica, Arial, sans-serif;
 $ff_exbold: 'Circe-ExtraBold', Helvetica, Arial, sans-serif;
-$fsz_main:16px;
-$margin-padding:10px;
-$width_xs_s:550px;
-$width_xs:767px;
-$width_md:1024px;
-$width_lg:1169px;
-$width_lgx:1366px;
+$fsz_main: 16px;
+$margin-padding: 10px;
+$width_xs_s: 550px;
+$width_xs: 767px;
+$width_md: 1024px;
+$width_lg: 1169px;
+$width_lgx: 1366px;
 
 //FONTS
-$fsz_h1:4em;
-$fsz_h2:2.6em;
-$fsz_h3:1.95em;
-$fsz_h4:1.25em;
-$fsz_h5:1.125em;
-$fsz_h6:1em;
-$fsz_small:0.85em;
+$fsz_h1: 4em;
+$fsz_h2: 2.6em;
+$fsz_h3: 1.95em;
+$fsz_h4: 1.25em;
+$fsz_h5: 1.125em;
+$fsz_h6: 1em;
+$fsz_small: 0.85em;
 $fw_b: 700;
 
 //COLORS
-$clr_main:#e12b2b;
+$clr_main: #e12b2b;
 $clr_main_dark: #c12929;
 $clr_disabled_bg: #aaafb3;
 $clr_white: #fff;
 $clr_grey: #cdd1da;
-$clr_primary:#002250;
-$clr_error:#e12b2b;
-$clr_highlight:#77ab60;
+$clr_primary: #002250;
+$clr_error: #e12b2b;
+$clr_highlight: #77ab60;
 $clr_yell: #ffd554;
-$clr_border:#e8e8e8;
+$clr_border: #e8e8e8;
 $clr_black: #000;
 $clr_dark: #4e4e4e;
 
-$trans:.3s ease;
+$trans: 0.3s ease;
 $br_r: 4px;
 
 %bgir {
-	background: no-repeat center/cover;
+    background: no-repeat center/cover;
 }
 
 %bgin {
-	background: no-repeat center/contain;
+    background: no-repeat center/contain;
 }
 
 %op_0 {
-	opacity: 0;
-	visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
 %op_1 {
-	opacity: 1;
-	visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
-$m_em:() !global;
-$m_rem:() !global;
+$m_em: () !global;
+$m_rem: () !global;
 
 @for $i from 1 through 10 {
-	$val: $margin-padding / $fsz_main * $i;
-	$m_em: append($m_em, $val + em);
-	$m_rem: append($m_rem, $val + rem);
+    $val: $margin-padding / $fsz_main * $i;
+    $m_em: append($m_em, $val + em);
+    $m_rem: append($m_rem, $val + rem);
 }
 
 @function em-parent($fs, $m_em) {
-	$m_px: ($m_em / 1em) * ($fsz_main / 1px);
-	$fsm_px: ($fsz_main / 1px) * ($fs / 1em);
+    $m_px: ($m_em / 1em) * ($fsz_main / 1px);
+    $fsm_px: ($fsz_main / 1px) * ($fs / 1em);
 
-	@return $m_px / $fsm_px+em;
+    @return $m_px / $fsm_px+em;
 }
 
 @function em($step) {
-	@return nth($m_em, $step);
+    @return nth($m_em, $step);
 }
 
 @function rem($step) {
-	@return nth($m_rem, $step);
+    @return nth($m_rem, $step);
 }
 
 //ICONS
-$icon_width:20px;
+$icon_width: 20px;
 $icon_bg: url('/dist/img/sprite.svg');
 
 //GRID
-$grid_width:1210px;
-$grid_gutter:40px;
-$grid_columns:12;
+$grid_width: 1210px;
+$grid_gutter: 40px;
+$grid_columns: 12;

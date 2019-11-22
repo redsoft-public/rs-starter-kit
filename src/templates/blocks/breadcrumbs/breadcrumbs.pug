@@ -1,0 +1,11 @@
+mixin breadcrumbs(items, title)
+	nav.breadcrumbs
+		ul.breadcrumbs__list&attributes(attributes)
+			each item, index in items
+				li.breadcrumbs__item
+					if (items.length === 1)
+						span.breadcrumbs__link= item
+					else if (index == items.length - 1)
+						span.breadcrumb__link= item
+					else
+						a(href="#" title=item).breadcrumb-link= item

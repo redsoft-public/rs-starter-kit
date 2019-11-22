@@ -4,71 +4,71 @@
 %h4,
 %h5,
 %h6 {
-	margin: 0 0 em(1);
-	line-height: 1.2;
-	font-weight: 300;
+    margin: 0 0 em(1);
+    line-height: 1.2;
+    font-weight: 300;
 }
 
 %h1 {
-	font-size: $fsz_h1;
-	line-height: .8;
-	font-family: $ff_exbold;
+    font-size: $fsz_h1;
+    line-height: 0.8;
+    font-family: $ff_exbold;
 }
 
 %h2 {
-	font-size: $fsz_h2;
-	font-weight: 400;
+    font-size: $fsz_h2;
+    font-weight: 400;
 }
 
 %h3 {
-	font-size: $fsz_h3;
-	font-weight: 500;
+    font-size: $fsz_h3;
+    font-weight: 500;
 }
 
 %h4 {
-	font-size: $fsz_h4;
-	font-weight: 400;
+    font-size: $fsz_h4;
+    font-weight: 400;
 }
 
 %h5 {
-	font-size: $fsz_h5;
+    font-size: $fsz_h5;
 }
 
 %h6 {
-	font-size: $fsz_h6;
+    font-size: $fsz_h6;
 }
 
 h1,
 .h1 {
-	@extend %h1;
+    @extend %h1;
 }
 
 h2,
 .h2 {
-	@extend %h2;
+    @extend %h2;
 }
 
 h3,
 .h3 {
-	@extend %h3;
+    @extend %h3;
 }
 
 h4,
 .h4 {
-	@extend %h4;
+    @extend %h4;
 }
 
 h5,
 .h5 {
-	@extend %h5;
+    @extend %h5;
 }
 
 h6,
 .h6 {
-	@extend %h6;
+    @extend %h6;
 }
 
 a {
-	transition: all $trans;
-	text-decoration: none;
+    transition: all $trans;
+    text-decoration: none;
 }

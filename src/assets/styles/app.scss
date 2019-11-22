@@ -1,40 +1,36 @@
 /*
+  libs
+*/
+@import '~normalize.css/normalize.css';
+@import '~swiper/css/swiper.min.css';
+@import '~magnific-popup/dist/magnific-popup.css';
+@import '~jquery-nice-select/scss/nice-select.scss';
+@import '~overlayscrollbars/css/OverlayScrollbars.min.css';
+@import '~nouislider/distribute/nouislider.min.css';
+
+/*
   Utils
 */
-@import './utils/mixins';
 @import './utils/variables';
+@import './utils/mixins';
 @import './utils/keyframes';
 
 /*
-  Common
+  Vendor
 */
-@import './common/*.scss';
+@import './vendor/**/*.scss';
 
 /*
   Layout
 */
-@import './layout/normalize';
 @import './layout/fonts';
 @import './layout/typo';
 @import './layout/grid';
 @import './layout/global';
 @import './layout/general';
+@import './layout/forms';
 
 /*
-  libs
-*/
-//@import '~swiper/dist/css/swiper.min';
-//@import '~magnific-popup/dist/magnific-popup.css';
-//@import '~jquery-nice-select/scss/nice-select.scss';
-//@import '~overlayscrollbars/css/OverlayScrollbars.min.css';
-//@import '~nouislider/distribute/nouislider.min.css';
-
-/*
-  PUG blocks
+  Blocks
 */
 @import '../../templates/blocks/**/*.scss';
-
-/*
-  PUG components
-*/
-@import '../../templates/components/**/*.scss';

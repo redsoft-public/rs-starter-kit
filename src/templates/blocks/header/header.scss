@@ -1,0 +1,24 @@
+.header {
+    color: white;
+    opacity: 1;
+    background-color: $clr_main;
+    padding: 15px 0;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        margin: 0;
+    }
+
+    &__menu {
+        margin-right: 40px;
+    }
+}

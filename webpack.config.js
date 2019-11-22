@@ -55,6 +55,9 @@ module.exports = (env) => {
 				'@Components': path.resolve(__dirname, './src/templates/components'),
 			},
 		},
+		externals: {
+			jquery: 'jQuery',
+		},
 		devServer: {
 			contentBase: path.resolve(__dirname, './src'),
 			overlay: true,
@@ -246,10 +249,6 @@ module.exports = (env) => {
 					},
 				}),
 				new webpack.ProvidePlugin({
-					'window.jQuery': path.resolve(__dirname, './node_modules/jquery/dist/jquery'),
-					'window.$': path.resolve(__dirname, './node_modules/jquery/dist/jquery'),
-					jQuery: path.resolve(__dirname, './node_modules/jquery/dist/jquery'),
-					$: path.resolve(__dirname, './node_modules/jquery/dist/jquery'),
 					Swiper: path.resolve(__dirname, './node_modules/swiper/dist/js/swiper'),
 				}),
 			];

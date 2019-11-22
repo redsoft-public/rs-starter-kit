@@ -73,16 +73,17 @@
 	},
 	"dependencies": {
 		"core-js": "^3.3.6",
-		"jquery": "^3.4.1",
-		"jquery.nice-number": "^2.0.1",
-		"jquery-nice-select": "github:denvolynets/jquery-nice-select",
-		"magnific-popup": "^1.1.0",
-		"overlayscrollbars": "^1.10.0",
-		"swiper": "^5.2.0",
-		"svg4everybody": "^2.1.9",
-		"nouislider": "^14.0.3",
 		"inputmask": "^4.0.9",
-		"jquery-validation": "^1.19.1"
+		"jquery": "^3.4.1",
+		"jquery-nice-select": "github:denvolynets/jquery-nice-select",
+		"jquery-validation": "^1.19.1",
+		"jquery.nice-number": "^2.0.1",
+		"magnific-popup": "^1.1.0",
+		"normalize.css": "^8.0.1",
+		"nouislider": "^14.0.3",
+		"overlayscrollbars": "^1.10.0",
+		"svg4everybody": "^2.1.9",
+		"swiper": "^5.2.0"
 	},
 	"browserslist": [
 		"> 1%",

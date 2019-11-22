@@ -1,55 +1,66 @@
+$btn-primary-color: $clr_main;
+
+@mixin applyBtnDisabledStyles() {
+    &:disabled,
+    &:hover:disabled {
+        border: 1px solid $clr_border;
+        background-color: $clr_border;
+        color: #000;
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
 .btn {
-	display: inline-block;
-	padding: 6px 30px;
-	color: $clr_dark;
-	text-align: center;
-	line-height: 1.6;
-	text-transform: uppercase;
-	text-decoration: none;
-	border-radius: $br_r;
-	border: 1px solid $clr_border;
-	transition: all .2s;
-	cursor: pointer;
-	box-sizing: border-box;
-	margin-right: 5px;
-	vertical-align: middle;
+    display: inline-block;
+    padding: 6px 30px;
+    border: 1px solid $clr_border;
+    background-color: $clr_border;
+    border-radius: $br_r;
+    line-height: 1.6;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+    vertical-align: middle;
 
-	&-border {
-		border: 1px solid $clr_main;
-		color: $clr_main;
+    @include applyBtnDisabledStyles;
+}
 
-		&:hover {
-			background-color: $clr_main;
-			color: $clr_white;
-		}
-	}
+.btn_block {
+    display: block;
+    width: 100%;
+}
 
-	&-primary {
-		&:hover {
-			border: 1px solid $clr_disabled_bg;
-		}
-	}
+.btn_primary {
+    border-color: $btn-primary-color;
+    background-color: $btn-primary-color;
+    color: #fff;
 
-	&-fill {
-		background-color: $clr_main;
-		color: $clr_white;
-		border-color: $clr_main;
+    &:hover {
+        background-color: darken($btn-primary-color, 10);
+    }
 
-		&:hover {
-			background-color: $clr_main_dark;
-			border-color: $clr_main_dark;
-		}
-	}
+    @include applyBtnDisabledStyles;
+}
 
-	&-disabled,
-	&:disabled {
-		background-color: rgba($clr_disabled_bg, .9);
-		color: $clr_white;
-		border-color: rgba($clr_disabled_bg, .9);
+.btn_outline {
+    background-color: #fff;
 
-		&:hover {
-			background-color: rgba($clr_disabled_bg, 1);
-			border-color: rgba($clr_disabled_bg, 1);
-		}
-	}
+    &:hover {
+        background-color: $clr_border;
+    }
+
+    @include applyBtnDisabledStyles;
+}
+
+.btn_outline.btn_primary {
+    color: $btn-primary-color;
+
+    &:hover {
+        color: #fff;
+        background-color: $btn-primary-color;
+    }
+
+    @include applyBtnDisabledStyles;
 }

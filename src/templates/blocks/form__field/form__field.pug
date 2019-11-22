@@ -25,15 +25,8 @@ mixin formField(type="text", placeholder, options = [], textarea = false)
 			textarea(type='textarea' class="form__textarea", placeholder=`${placeholder}` data-validate=`${validate}`)
 
 
-
 mixin radio(text)
 	input(type="radio")&attributes(attributes)
-	label(for=attributes.id)=text
-
-
-
-mixin checkbox(text)
-	input(type="checkbox")&attributes(attributes)
 	label(for=attributes.id)=text
 
 
