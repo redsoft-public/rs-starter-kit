@@ -28,14 +28,14 @@ $.validator.addMethod('vmcardsonly', function vmcardsonly(value, element) {
 
 const vData = {
     formClasses: {
-        name: '.form',
-        field: '.js-form__field',
+        name: '.js-validate-form',
+        field: '.js-validate-field',
         fieldRadio: '.js-form__radios',
-        btn: '.btn',
-        btnDisabled: 'btn-disabled',
+        btn: '.js-btn-submit',
+        btnDisabled: '',
     },
     btnSubmitDisabled(element, formClasses) {
-        const { name, btnDisabled, btn } = formClasses;
+        const { name, btn } = formClasses;
         const form = $(element)
             .parents(name);
 
@@ -48,11 +48,11 @@ const vData = {
         if (this.checkForm()) {
             $(form)
                 .find(btn)
-                .removeClass(btnDisabled);
+                .prop('disabled', true);
         } else {
             $(form)
                 .find(btn)
-                .addClass(btnDisabled);
+                .prop('disabled', false);
         }
     },
     validResultClasses(element, type, formClasses) {

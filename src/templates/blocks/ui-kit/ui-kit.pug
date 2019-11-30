@@ -16,13 +16,48 @@ mixin ui-kit()
         .b-forms.b-component
             h2.h2 2. Form
                 .anchor#b-forms
-            form.form
-                +formField('text', 'ФИО')(
-                    data-msg="Поле ФИО обязательно для заполнения",
-                    data-msg-minlength="Пожалуйста, введите не меньше 3 символов.",
-                    minlength="3",
-                    required
-                )
+            form.form.js-validate-form
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="ФИО",
+                        name="fullname",
+                        data-msg="Поле ФИО обязательно для заполнения",
+                        data-msg-minlength="Пожалуйста, введите не меньше 3 символов.",
+                        minlength="3",
+                        required
+                    )
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Телефон"
+                        name="phone"
+                        required
+                    ).js-mask-tel
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Email"
+                        name="email"
+                        required
+                    ).js-mask-email
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Банковская карта"
+                        name="card"
+                        required
+                    ).js-mask-card
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Дата"
+                        name="date"
+                        required
+                    ).js-mask-date
+                +btn(type="submit").js-submit-btn Submit
+
+                //+formField('text', 'ФИО')(
+                //    data-msg="Поле ФИО обязательно для заполнения",
+                //    data-msg-minlength="Пожалуйста, введите не меньше 3 символов.",
+                //    minlength="3",
+                //    required
+                //)
         //		+formField('tel', 'Телефон')(name="phoneRU" required).tel-input
         //		+formField('text', 'Дата')(name="date", required).date-input
         //		+formField('text', 'E-mail')(name="email", required).email-input

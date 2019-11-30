@@ -2,7 +2,7 @@ import vData from './formValidateMethods';
 
 export default function formValidate() {
     const {
-        formClasses, btnSubmitDisabled, validResultClasses, checkFormOnInit,
+        formClasses, btnSubmitDisabled, checkFormOnInit,
     } = vData;
 
     $(formClasses.name)
@@ -31,8 +31,8 @@ export default function formValidate() {
                 btnSubmitDisabled.apply(this, [element, formClasses]);
             },
             errorPlacement(error, element) {
-                const type = $(element)
-                    .attr('type');
+                const type = $(element).attr('type');
+                const errorContainer = $(element).parent().find('.input-text__error');
 
                 switch (type) {
                 case 'radio':
@@ -40,21 +40,33 @@ export default function formValidate() {
                         .parents(formClasses.fieldRadio));
                     break;
                 default:
-                    error.appendTo($(element)
-                        .parent(formClasses.field));
+                    errorContainer.html(error);
                     break;
                 }
             },
             highlight(element) {
-                validResultClasses.apply(this, [element, 'highlight', formClasses]);
+                const type = $(element).attr('type');
+
+                switch (type) {
+                default:
+                    $(element).parent().addClass('input-text_error');
+                    break;
+                }
             },
             unhighlight(element) {
-                validResultClasses.apply(this, [element, 'unhighlight', formClasses]);
+                const type = $(element).attr('type');
+
+                switch (type) {
+                default:
+                    $(element).parent().removeClass('input-text_error');
+                    break;
+                }
             },
             submitHandler() {
                 // eslint-disable-next-line no-alert
                 alert('Форма успешно отправлена!');
             },
+            errorElement: 'span',
         });
 
     checkFormOnInit.apply(vData);

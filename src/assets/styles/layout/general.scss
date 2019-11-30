@@ -1,19 +1,20 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
-    font-family: $ff_main;
-    min-height: 100vh;
-    overflow-x: hidden;
+    box-sizing: border-box;
     color: $clr_dark;
     font-size: $fsz_main;
-    line-height: 1.4;
-    transition: all $trans;
-    background: transparent;
-    margin: 0;
+    font-family: $ff_main;
+    outline: none;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    outline: inherit;
 }

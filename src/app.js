@@ -16,6 +16,8 @@ import formValidate from '@Scripts/formValidate';
 import carousel from '@Blocks/carousel/carousel';
 import hamburger from '@Blocks/hamburger/hamburger';
 
+import { inputText } from '@Blocks/input-text/input-text';
+
 
 // Пример разбиения файлов на отдельные чанки
 const chunks = {
@@ -26,6 +28,7 @@ const chunks = {
 const app = {
     load: () => {
         app.bindEvents();
+        inputText();
     },
     bindEvents: () => {
         // Динамическая подрузка чанков
@@ -67,10 +70,10 @@ const app = {
                         const maskPlaceholder = this.masks[maskName];
 
                         if (typeof maskPlaceholder === 'object') {
-                            $(`input.${maskName}-input`)
+                            $(`input.js-mask-${maskName}`)
                                 .inputmask(...maskPlaceholder);
                         } else {
-                            $(`input.${maskName}-input`)
+                            $(`input.js-mask-${maskName}`)
                                 .inputmask(maskPlaceholder);
                         }
                     });

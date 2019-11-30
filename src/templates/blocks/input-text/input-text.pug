@@ -1,0 +1,11 @@
+mixin input-text(props)
+    - var { validate } = props;
+
+    label.input-text
+        if validate
+            input.input-text__field.js-validate-field(autocomplete="off")&attributes(attributes)
+        else
+            input.input-text__field(autocomplete="off")&attributes(attributes)
+        span.input-text__label= attributes.placeholder
+        span.input-text__error
+            span.error-label
