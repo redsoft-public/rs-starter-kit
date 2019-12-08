@@ -1,0 +1,60 @@
+.input-text {
+    $border-color: $gray-400;
+    $focus-border-color: $gray-600;
+    $error-color: $red;
+
+    position: relative;
+    display: block;
+    width: 100%;
+    padding-top: 20px;
+    font-size: 16px;
+
+    &__field {
+        display: block;
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+    }
+
+    &__field:focus {
+        border-color: $focus-border-color;
+        outline: none;
+    }
+
+    &__field:invalid {
+        box-shadow: none;
+    }
+
+    &__field::placeholder {
+        color: #fff;
+    }
+
+    &__error {
+        height: 0;
+        color: $error-color;
+        font-size: 12px;
+        opacity: 0;
+        transition: all 0.15s;
+    }
+
+    &__label {
+        position: absolute;
+        top: 30px;
+        left: 15px;
+        pointer-events: none;
+
+        @include allTransition;
+    }
+
+    &__field.js-fill + &__label,
+    &__field:focus + &__label {
+        font-size: 10px;
+        top: 4px;
+    }
+}
+
+.input-text_error .input-text__error {
+    height: 16px;
+    opacity: 1;
+}

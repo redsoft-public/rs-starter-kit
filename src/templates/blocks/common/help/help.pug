@@ -1,0 +1,166 @@
+mixin help()
+    .container
+        h1.visually-hidden О стартер-ките
+
+
+        section.mb-6
+            h2.mb-3 Общая информация
+
+            h3.mt-4 Команды сборки и запуска
+            p
+                b npm run start
+                span  - запуск dev-сервера на порту 9090
+            p
+                b npm run build
+                span  - сборка в production-режиме
+            p
+                b npm run build:analyze
+                span  - сбока в production-режиме с показом анализа бандлов (#[a(href="https://github.com/webpack-contrib/webpack-bundle-analyzer" target="_blank") webpack bundle analyzer])
+
+            h3.mt-4 Bootstrap
+            p В основе стартер-кита лежит #[a(href="https://getbootstrap.com/" target="_blank") bootstrap] (#[a(href="https://bootstrap-4.ru/" target="_blank") Рускоязычная документация])
+            p Стили бутстрапа импортируются помодульно тут #[b.text-monospace src/assets/styles/vendor/bootstrap.scss]
+            p JS-модули бутстрапа импортируются помодульно тут #[b.text-monospace src/assets/scripts/modules/bootstrap.js]
+            .alert.alert-danger Ближе к релизу проекта следует отключить неиспользуемые модули бутстрапа
+            p
+                | Для верстки используем по максимуму возможности фреймворка: модальные окна, табы, сетки, адаптивность, кнопки, всплывающие подсказки и т.д
+                | Кастомизация достигается переопределением #[a(href="https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss" target="_blank") переменных].
+                | Размещать переменные стоит в директории #[b.text-monospace src/assets/styles/variables], создавая отдельные файлы согласно области применения
+
+        section.mb-6
+            h2 Базовое модальное окно
+            button.btn.btn-outline-info(data-toggle="modal" data-target="#modal-base") Открыть
+
+            +modal-base({ title: 'Заголовок окна', dialogClass: 'modal-dialog-centered' })#modal-base(data-id="modal-base")
+                .modal-body
+                    p Контент
+
+        section.mb-6
+            h2 Элементы форм
+                .anchor#b-forms
+            form.form.js-validate-form
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="ФИО",
+                        name="fullname",
+                        data-msg="Поле ФИО обязательно для заполнения",
+                        data-msg-minlength="Пожалуйста, введите не меньше 3 символов.",
+                        minlength="3",
+                        required
+                    )
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Телефон"
+                        name="phone"
+                        required
+                    ).js-mask-tel
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Email"
+                        name="email"
+                        required
+                    ).js-mask-email
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Банковская карта"
+                        name="card"
+                        required
+                    ).js-mask-card
+                .form__field
+                    +input-text({ validate: true })(
+                        placeholder="Дата"
+                        name="date"
+                        required
+                    ).js-mask-date
+                .form__field
+                    +input-text({ validate: true })(
+                        name="password"
+                        placeholder="Пароль"
+                        required
+                        type="password"
+                    )#js-password
+                .form__field
+                    +input-text({ validate: true })(
+                        equalTo="#js-password"
+                        name="password"
+                        placeholder="Повторите пароль"
+                        required
+                        type="password"
+                    )
+
+                .form__field
+                    +select({
+                        options: ['Option 1', 'Option 2'],
+                        defaultText: 'Выберите один из вариантов'
+                    })(
+                        name="select",
+                        required
+                    )
+                .form__field
+                    input.js-custom-number(type="number")
+                //+formField('checkbox', 'Чекбокс 1')(name="checkbox", id="checkbox-form", required)
+                .form__field
+                    button.btn.btn-block.btn-primary(type="submit").js-submit-btn Submit
+
+        //		.form__radios.js-form__radios
+        //			+formField('radio', 'Радио-баттон 1')(name="radiost", id="radio-form-1", required)
+        //			+formField('radio', 'Радио-баттон 2')(name="radiost", id="radio-form-2", required)
+        //		.form__footer
+        //			+btn('fill','submit', false, 'Отправить')
+        //
+        //.b-carousel.b-component
+        //	h2.h2 3. Carousel
+        //		.anchor#b-carousel
+        //	+carousel()
+        //.b-typographie.b-component
+        //	h2.h2 4. Titles
+        //		.anchor#b-typographie
+        //		h1.h1 Redsoft h1
+        //		h2.h2 Redsoft h2
+        //		h3.h3 Redsoft h3
+        //		h4.h4 Redsoft h4
+        //		h5.h5 Redsoft h5
+        //		h6.h6 Redsoft h6
+        //.b-component
+        //	h2.h2 5. Checkbox, Radio-input
+        //		.anchor#b-checkboxes
+        //	.b-boxes
+        //		.b-boxes__block
+        //			.b-boxes__input
+        //				+checkbox("Чекбокс 1")(id="checkbox")
+        //			.b-boxes__input
+        //				+checkbox("Чекбокс 2")(id="checkbox1")
+        //		.b-boxes__block
+        //			.b-boxes__input
+        //				+radio("Радиокнопка 1")(name="radios", id="radio1")
+        //			.b-boxes__input
+        //				+radio("Радиокнопка 2")(name="radios", id="radio2")
+        //.b-range-slider.b-component
+        //	h2.h2 6. Range-slider
+        //		.anchor#b-range-slider
+        //	.range-slider
+        //.b-component
+        //	h2.h2 7. Hamburger
+        //		.anchor#hamburger
+        //	+hamburger
+        //.b-component
+        //	h2.h2 8. Popups
+        //		.anchor#popups
+        //	+btn-popup('fill', '#contact') Open popup
+        //.b-component.b-backgrounds
+        //	h2.h2 9. Images
+        //	.b-backgrounds__container
+        //		.b-backgrounds__item
+        //			h4 #[b SVG icon from sprite] (background)
+        //			div
+        //		.b-backgrounds__item
+        //			h4 #[b JPG] (background)
+        //			div
+        //		.b-backgrounds__item
+        //			h4 #[b SVG] (from IMG tag)
+        //			+icon('null')
+        //		.b-backgrounds__item
+        //			h4 #[b JPG] (from IMG tag)
+        //			div
+        //				+img('banner.jpg', 'Redsoft-ALT')
+        //

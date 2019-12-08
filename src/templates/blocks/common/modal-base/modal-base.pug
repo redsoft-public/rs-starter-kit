@@ -1,0 +1,11 @@
+mixin modal-base(props)
+    -var { title, dialogClass } = props;
+
+    .modal.fade&attributes(attributes)
+        .modal-dialog(class=dialogClass)
+            .modal-content
+                .modal-header
+                    h5.modal-title= title
+                    button.close(data-dismiss="modal")
+                        span &times;
+                block

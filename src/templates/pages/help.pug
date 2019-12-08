@@ -1,0 +1,21 @@
+include ../mixins/list
+
+doctype html
+html(lang="ru")
+	include ../shared/head
+	block head
+	body
+		main.main
+			.page-container
+				+header()
+				.main-content
+					.container
+						+help()
+				footer.footer
+					.footer__inner
+						.container
+							a(target="_blank" href="https://redsoft.ru" class="redsoft")
+								.redsoft__inner
+									span.redsoft__img
+										+icon('logo')
+									span.redsoft__caption Разработка сайта #[br] Redsoft

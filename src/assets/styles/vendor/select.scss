@@ -31,7 +31,7 @@
 
         &:hover {
             .option {
-                background-color: rgba($clr_main_dark, .85) !important;
+                background-color: rgba($gray-400, .85) !important;
 
                 &:not(:hover) {
                     background-color: $clr_main_dark !important;
@@ -44,7 +44,7 @@
         background-color: $clr_main_dark;
         border-radius: $br_r;
         border: 1px solid rgba($clr_main, 1);
-        color: $clr_white;
+        color: $white;
 
         &.selected {
             display: none;

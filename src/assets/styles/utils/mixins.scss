@@ -150,19 +150,8 @@
     }
 }
 
-@mixin placeholder {
-    &::-webkit-input-placeholder {
-        @content;
-    }
-
-    &:-moz-placeholder {
-        /* Firefox 18- */
-        @content;
-    }
-
-    &:-ms-input-placeholder {
-        @content;
-    }
+@mixin allTransition {
+    transition: all 0.3s ease-out;
 }
 
 @mixin posReset {

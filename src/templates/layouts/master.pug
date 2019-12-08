@@ -1,0 +1,14 @@
+include ../mixins/list
+
+doctype html
+html(lang="ru")
+	include ../shared/head
+	block head
+	body
+		#main
+			.page-container
+				+header()
+				block content
+			+footer()
+		.g-hide
+			+popups()

@@ -1,0 +1,16 @@
+- var staticPath = "./assets/";
+- var imgPath = `${staticPath}images/`;
+
+include ../blocks/common/import
+
+mixin title(...titleParts)
+	- var t = "Your Website Name"
+	each titlePart in titleParts.reverse()
+		- t = titlePart + " / " + t
+	title #{t}
+
+mixin statcss(href)
+	link(rel="stylesheet" href=href)
+
+mixin statjs(href)
+	script(src=href)

@@ -7,7 +7,7 @@
 		"commonjs": true,
 		"jquery": true
 	},
-	"extends": "airbnb",
+	"extends": "airbnb/base",
 	"rules": {
 		"indent": [
 			2,
@@ -26,28 +26,24 @@
 					"./src"
 				],
 				[
-					"@Styles",
+					"@styles",
 					"./src/assets/styles/"
 				],
 				[
-					"@Scripts",
+					"@scripts",
 					"./src/assets/scripts/"
 				],
 				[
-					"@Templates",
+					"@templates",
 					"./src/templates/"
 				],
 				[
-					"@Assets",
+					"@assets",
 					"./src/assets/"
 				],
 				[
-					"@Blocks",
+					"@blocks",
 					"./src/templates/blocks"
-				],
-				[
-					"@Components",
-					"./src/templates/components"
 				]
 			]
 		}

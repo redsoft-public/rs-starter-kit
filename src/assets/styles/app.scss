@@ -1,34 +1,15 @@
 /*
-  libs
-*/
-@import '~normalize.css/normalize.css';
-@import '~swiper/css/swiper.min.css';
-@import '~magnific-popup/dist/magnific-popup.css';
-@import '~jquery-nice-select/scss/nice-select.scss';
-@import '~overlayscrollbars/css/OverlayScrollbars.min.css';
-@import '~nouislider/distribute/nouislider.min.css';
-
-/*
   Utils
 */
-@import './utils/variables';
-@import './utils/mixins';
-@import './utils/keyframes';
+@import 'variables/*.scss';
+@import 'utils/mixins';
+@import 'utils/keyframes';
+@import 'utils/utils';
 
 /*
   Vendor
 */
-@import './vendor/**/*.scss';
-
-/*
-  Layout
-*/
-@import './layout/fonts';
-@import './layout/typo';
-@import './layout/grid';
-@import './layout/global';
-@import './layout/general';
-@import './layout/forms';
+@import 'vendor/import';
 
 /*
   Blocks

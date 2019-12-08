@@ -1,0 +1,9 @@
+mixin select(data)
+    - const { options, defaultText } = data;
+
+    select&attributes(attributes)(data-default-text=`${defaultText ? defaultText : ''}`)
+        each option in options
+            if (option == '')
+                option(value="", data-display="Выберите значение") Выберите значение
+            else
+                option(value=option)=option
