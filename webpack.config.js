@@ -25,8 +25,6 @@ module.exports = (env) => {
     const type = env.NODE_ENV;
     const isProd = config[type].mode === 'production';
 
-    const { outputPath } = config[type];
-
     const consoleStats = {
         all: false,
         modules: true,
@@ -37,7 +35,7 @@ module.exports = (env) => {
         errorDetails: true,
     };
     return {
-        mode: config[type],
+        mode: config[type].mode,
         devtool: config[type].devtool,
         context: path.resolve(__dirname, './src'),
         cache: true,
@@ -45,7 +43,7 @@ module.exports = (env) => {
             app: './app.js',
         },
         output: {
-            path: path.resolve(__dirname, outputPath),
+            path: path.resolve(__dirname, config[type].outputPath),
             publicPath: config[type].outputPublicPath,
             filename: `${config[type].jsPath}/bundle.[name].js`,
             chunkFilename: `${config[type].jsPath}/[name].js`,
