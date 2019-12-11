@@ -1,6 +1,10 @@
 /**
  * Тут импортируем npm-пакеты
  */
+import 'core-js/es/array/from';
+import 'core-js/modules/web.dom-collections.iterator';
+import 'core-js/modules/web.dom-collections.for-each';
+
 import svg4everybody from 'svg4everybody';
 
 /**
