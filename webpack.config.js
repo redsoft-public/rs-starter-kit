@@ -76,7 +76,6 @@ module.exports = (env) => {
             rules: (function (argv) {
                 const rules = [{
                     test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
                     use: [{
                         loader: 'babel-loader',
                         options: {

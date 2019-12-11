@@ -1,4 +1,0 @@
-{
-  "presets": ["@babel/preset-env"],
-  "plugins": ["@babel/plugin-transform-object-assign", "@babel/plugin-syntax-dynamic-import", "webpack-async-module-name"]
-}
