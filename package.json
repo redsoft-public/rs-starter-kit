@@ -8,7 +8,9 @@
 		"dev": "nodemon --watch ./webpack.config.js --watch ./src/templates/pugData.js --exec \"webpack-dev-server --progress --no-info --config ./webpack.config.js --env.NODE_ENV=development\"",
 		"build": "webpack --config ./webpack.config.js --env.NODE_ENV=production --aot=false -p --progress",
 		"build:analyze": "webpack --config ./webpack.config.js --env.NODE_ENV=production --aot=false -p --progress --analyze",
-		"watch": "webpack --watch --config ./webpack.config.js --env.NODE_ENV=production"
+        "watch": "webpack --watch --config ./webpack.config.js --env.NODE_ENV=production",
+        "bx": "webpack --config ./webpack.config.js --env.NODE_ENV=bx --aot=false -p --progress",
+		"bxw": "webpack --watch --config ./webpack.config.js --env.NODE_ENV=bxw --aot=false -p --progress"
 	},
 	"author": "Redsoft Frontend Team",
 	"license": "ISC",
