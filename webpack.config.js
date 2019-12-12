@@ -47,7 +47,6 @@ const configFactory = (type) => {
             cache: true,
             output: {
                 path: path.resolve(__dirname, params.outputPath),
-                publicPath: params.outputPublicPath,
                 filename: `${params.jsPath}/bundle.[name].js`,
                 chunkFilename: `${params.jsPath}/[name].js`,
             },
@@ -65,12 +64,16 @@ const configFactory = (type) => {
                 jquery: 'jQuery',
             },
             devServer: {
-                contentBase: path.resolve(__dirname, './src'),
+                serveIndex: true,
+                contentBase: path.resolve(__dirname, './dist'),
+                writeToDisk: true,
+                publicPath: params.outputPublicPath,
                 overlay: true,
                 compress: true,
                 port: 9090,
                 stats: consoleStats,
                 open: false,
+                hot: true,
             },
             stats: consoleStats,
             performance: {
