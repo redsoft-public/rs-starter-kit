@@ -22,8 +22,9 @@ const config = require('./config.js');
 const pugData = require('./src/templates/pugData.js');
 
 module.exports = (env) => {
-    const prod = env.NODE_ENV === 'production';
-    const outputPath = prod ? config.outputPathProd : config.outputPathDev;
+    const type = env.NODE_ENV;
+    const isProd = config[type].mode === 'production';
+
     const consoleStats = {
         all: false,
         modules: true,
@@ -34,18 +35,18 @@ module.exports = (env) => {
         errorDetails: true,
     };
     return {
-        mode: prod ? 'production' : 'development',
-        devtool: prod ? 'none' : 'inline-source-map',
+        mode: config[type].mode,
+        devtool: config[type].devtool,
         context: path.resolve(__dirname, './src'),
         cache: true,
         entry: {
             app: './app.js',
         },
         output: {
-            path: path.resolve(__dirname, outputPath),
-            publicPath: prod ? './' : '/',
-            filename: `${config.jsPath}/bundle.[name].js`,
-            chunkFilename: `${config.jsPath}/[name].js`,
+            path: path.resolve(__dirname, config[type].outputPath),
+            publicPath: config[type].outputPublicPath,
+            filename: `${config[type].jsPath}/bundle.[name].js`,
+            chunkFilename: `${config[type].jsPath}/[name].js`,
         },
         resolve: {
             alias: {
@@ -93,7 +94,7 @@ module.exports = (env) => {
                             loader: 'postcss-loader',
                             options: {
                                 plugins: () => [autoprefixer],
-                                sourceMap: !prod,
+                                sourceMap: config[type].scssSourseMap,
                             },
                         },
                         'sass-loader?sourceMap',
@@ -110,7 +111,7 @@ module.exports = (env) => {
                             loader: SvgStorePlugin.loader,
                             options: {
                                 name: 'assets/images/svg-sprite/sprite.svg',
-                                publicPath: prod ? config.publicPathProdInCSS : '../../',
+                                publicPath: config[type].publicPathInlineCSS,
                                 iconName: '[name]',
                             },
                         },
@@ -147,7 +148,7 @@ module.exports = (env) => {
                     options: {
                         emitFile: true,
                         limit: 1,
-                        publicPath: prod ? config.publicPathProdInCSS : '../../',
+                        publicPath: config[type].publicPathInlineCSS,
                         name: '[path][name].[ext]',
                     },
                 },
@@ -159,8 +160,8 @@ module.exports = (env) => {
                     loader: 'url-loader',
                     options: {
                         limit: 5000,
-                        publicPath: prod ? config.publicPathProdInCSS : '/',
-                        name: prod ? '[path][name].[ext]' : '../[path][name].[ext]',
+                        publicPath: config[type].publicPathInlineCSS,
+                        name: isProd ? '[path][name].[ext]' : '../[path][name].[ext]',
                     },
                 },
                 {
@@ -177,7 +178,7 @@ module.exports = (env) => {
                         {
                             loader: 'file-loader',
                             options: {
-                                name: `${config.htmlFilesPath}[name].html`,
+                                name: `${config[type].htmlFilesPath}[name].html`,
                             },
                         },
                         {
@@ -187,6 +188,7 @@ module.exports = (env) => {
                                 exports: false,
                                 data: {
                                     $data: pugData,
+                                    bxpath: config[type].bxPugImageInlinePath
                                 },
                             },
                         },
@@ -194,7 +196,7 @@ module.exports = (env) => {
                 },
                 ];
 
-                if (config.esLint) {
+                if (config[type].esLint) {
                     rules.push({
                         test: /\.js$/,
                         exclude: /node_modules/,
@@ -236,8 +238,8 @@ module.exports = (env) => {
                     to: 'assets/images',
                 }]),
                 new MiniCssExtractPlugin({
-                    filename: `${config.cssPath}/bundle.[name].css`,
-                    chunkFilename: `${config.cssPath}/[name].css`,
+                    filename: `${config[type].cssPath}/bundle.[name].css`,
+                    chunkFilename: `${config[type].cssPath}/[name].css`,
                 }),
                 new WebpackBuildNotifierPlugin({
                     title: 'RedSoft',
@@ -246,7 +248,7 @@ module.exports = (env) => {
                 }),
                 new FriendlyErrorsWebpackPlugin({
                     compilationSuccessInfo: {
-                        messages: [prod ? `Build complete at folder "${config.outputPathProd.replace(/\./g, '')}"` : 'You server is running here http://localhost:9090'],
+                        messages: [isProd ? `Build complete at folder "${config[type].outputPath.replace(/\./g, '')}"` : 'You server is running here http://localhost:9090'],
                     },
                 }),
                 new webpack.ProvidePlugin({
@@ -254,7 +256,7 @@ module.exports = (env) => {
                 }),
             ];
 
-            if (prod) {
+            if (isProd) {
                 plugins.push(
                     new OptimizeCssAssetsPlugin({
                         cssProcessor: cssnano,
