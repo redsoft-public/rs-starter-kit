@@ -17,6 +17,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const SvgStorePlugin = require('external-svg-sprite-loader');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const Fiber = require('fibers');
 
 const config = require('./config.js');
 const pugData = require('./src/templates/pugData.js');
@@ -97,8 +98,15 @@ module.exports = (env) => {
                                 sourceMap: config[type].scssSourseMap,
                             },
                         },
-                        'sass-loader?sourceMap',
-                        'import-glob-loader',
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: config[type].scssSourseMap,
+                                sassOptions: {
+                                    fiber: Fiber,
+                                },
+                            },
+                        },
                     ],
                 },
                 {
@@ -260,13 +268,6 @@ module.exports = (env) => {
                 plugins.push(
                     new OptimizeCssAssetsPlugin({
                         cssProcessor: cssnano,
-                        cssProcessorPluginOptions: {
-                            preset: ['default', {
-                                discardComments: {
-                                    removeAll: true,
-                                },
-                            }],
-                        },
                         canPrint: true,
                     }),
                     new ImageminPlugin({

@@ -1,7 +1,7 @@
 /*
   Utils
 */
-@import 'variables/*.scss';
+@import 'variables/import';
 @import 'utils/mixins';
 @import 'utils/keyframes';
 @import 'utils/utils';
@@ -14,4 +14,4 @@
 /*
   Blocks
 */
-@import '../../templates/blocks/**/*.scss';
+@import '../../templates/blocks/common/import';

@@ -1,5 +1,5 @@
 module.exports = {
-    plugins: ['@babel/plugin-transform-object-assign', '@babel/plugin-syntax-dynamic-import', 'webpack-async-module-name'],
+    plugins: ['@babel/plugin-syntax-dynamic-import'],
     presets: [
         [
             '@babel/preset-env',
