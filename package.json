@@ -4,13 +4,13 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"start": "nodemon --watch ./webpack.config.js --watch ./src/templates/pugData.js --exec \"webpack-dev-server --progress --no-info --config ./webpack.config.js --env.NODE_ENV=development\"",
-		"dev": "nodemon --watch ./webpack.config.js --watch ./src/templates/pugData.js --exec \"webpack-dev-server --progress --no-info --config ./webpack.config.js --env.NODE_ENV=development\"",
-		"build": "webpack --config ./webpack.config.js --env.NODE_ENV=production --aot=false -p --progress",
-		"build:analyze": "webpack --config ./webpack.config.js --env.NODE_ENV=production --aot=false -p --progress --analyze",
-		"watch": "webpack --watch --config ./webpack.config.js --env.NODE_ENV=production",
-		"bx": "webpack --config ./webpack.config.js --env.NODE_ENV=bx --aot=false -p --progress",
-		"bxw": "webpack --watch --config ./webpack.config.js --env.NODE_ENV=bxw --aot=false -p --progress"
+		"start": "cross-env BUILD_TYPE=development NODE_ENV=development nodemon --watch ./webpack.config.js --watch ./src/templates/pugData.js --exec \"webpack-dev-server --progress --no-info --config ./webpack.config.js \"",
+		"dev": "cross-env BUILD_TYPE=development NODE_ENV=development nodemon --watch ./webpack.config.js --watch ./src/templates/pugData.js --exec \"webpack-dev-server --progress --no-info --config ./webpack.config.js \"",
+		"build": "cross-env BUILD_TYPE=production NODE_ENV=production webpack --config ./webpack.config.js --env.NODE_ENV=production --aot=false -p --progress",
+		"build:analyze": "cross-env BUILD_TYPE=production NODE_ENV=production webpack --config ./webpack.config.js --aot=false -p --progress --analyze",
+		"watch": "cross-env BUILD_TYPE=production NODE_ENV=production webpack --watch --config ./webpack.config.js",
+		"bx": "cross-env BUILD_TYPE=bx NODE_ENV=production webpack --config ./webpack.config.js --aot=false -p --progress",
+		"bxw": "cross-env BUILD_TYPE=bxw NODE_ENV=production webpack --watch --config ./webpack.config.js --aot=false -p --progress"
 	},
 	"author": "Redsoft Frontend Team",
 	"license": "ISC",
@@ -26,6 +26,7 @@
 		"babel-loader": "^8.0.6",
 		"clean-webpack-plugin": "^3.0.0",
 		"copy-webpack-plugin": "^5.1.1",
+		"cross-env": "^6.0.3",
 		"css-loader": "^3.3.2",
 		"cssnano": "^4.1.10",
 		"eslint": "^6.7.2",
