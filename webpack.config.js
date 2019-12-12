@@ -8,7 +8,7 @@ const webpack = require('webpack');
 const yargs = require('yargs');
 
 const { argv } = yargs.boolean('disable-compression-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const FixStyleEntriesPlugin = require('webpack-fix-style-only-entries');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -263,6 +263,7 @@ const configFactory = (type) => {
                     new webpack.ProvidePlugin({
                         Swiper: path.resolve(__dirname, './node_modules/swiper/dist/js/swiper'),
                     }),
+                    new FixStyleEntriesPlugin(),
                 ];
 
                 if (isProd) {

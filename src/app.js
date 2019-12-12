@@ -9,12 +9,6 @@ import 'core-js/modules/web.dom-collections.for-each';
 import svg4everybody from 'svg4everybody';
 
 /**
- * Импорт стилей
- */
-import '@styles/app.scss';
-
-
-/**
  * Импорт модулей приложения
  * Модуль в данном случае большой кусок кода, затрагивающий разные
  * части приложения, но отвечающий за определенную, понятную функциональность
@@ -107,4 +101,3 @@ const requireAll = (r) => {
 };
 
 requireAll(require.context('./assets/images/svg-icons/', true, /\.svg$/));
-requireAll(require.context('./templates/pages/', true, /\.pug$/));

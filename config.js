@@ -1,11 +1,14 @@
-const projectDir = 'inners'; 			// префикс пути -- local/templates ТОЛЬКО ДЛЯ БИТРИКСА
-
 const targets = {
-    inners: {
+    main: {
         app: './app.js',
+        'app.styles': './assets/styles/app.scss',
+        'index.template': './templates/pages/index.pug',
     },
-    app2: {
+    help: {
         app2: './app2.js',
+        app: './app.js',
+        'app.styles': './assets/styles/app.scss',
+        'help.template': './templates/pages/help.pug',
     },
 };
 
