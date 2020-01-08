@@ -9,6 +9,7 @@ const yargs = require('yargs');
 
 const { argv } = yargs.boolean('disable-compression-plugin');
 const FixStyleEntriesPlugin = require('webpack-fix-style-only-entries');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
@@ -26,7 +27,6 @@ const targetsList = Object.keys(config.targets);
 const configFactory = (type) => {
     const result = targetsList.map((target) => {
         const params = config.getConfigData(target)[type];
-        console.log(params);
         const isProd = params.mode === 'production';
 
         const consoleStats = {
@@ -73,7 +73,6 @@ const configFactory = (type) => {
                 port: 9090,
                 stats: consoleStats,
                 open: false,
-                hot: true,
             },
             stats: consoleStats,
             performance: {

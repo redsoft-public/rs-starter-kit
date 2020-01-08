@@ -1,14 +1,27 @@
+/**
+ * Описание файлов для сборки, каждый ключ объекта targets
+ * представляет описание js, scss и pug файлов, которые должны
+ * будут собираться в папку - название ключа
+ * Пример:
 const targets = {
     main: {
         app: './app.js',
         'app.styles': './assets/styles/app.scss',
         'index.template': './templates/pages/index.pug',
     },
-    help: {
-        app2: './app2.js',
+};
+ * в папку dist/main будут собраны index.html, app.bundle.js и app.styles.bundle.css
+ */
+const targets = {
+    main: {
         app: './app.js',
         'app.styles': './assets/styles/app.scss',
-        'help.template': './templates/pages/help.pug',
+        index: './templates/pages/index.pug',
+    },
+    help: {
+        app: './app.js',
+        'app.styles': './assets/styles/app.scss',
+        help: './templates/pages/help.pug',
     },
 };
 

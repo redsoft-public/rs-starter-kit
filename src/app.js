@@ -28,9 +28,9 @@ import initRangeSlider from '@scripts/modules/range-slider';
  * Импорт кода относящегося к блокам в терминах БЭМ
  * Жестко привязан к конкретной разметке и затрагивает только ее
  */
-import carousel from '@blocks/common/carousel/carousel';
-import hamburger from '@blocks/common/hamburger/hamburger';
 import { inputText } from '@blocks/common/input-text/input-text';
+import carousel from './templates/blocks/common/carousel/carousel';
+import hamburger from './templates/blocks/common/hamburger/hamburger';
 
 
 // Пример разбиения файлов на асинхронные чанки
