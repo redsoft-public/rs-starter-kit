@@ -19,7 +19,7 @@
 		"@babel/parser": "^7.7.5",
 		"@babel/plugin-syntax-dynamic-import": "^7.7.4",
 		"@babel/preset-env": "^7.7.6",
-		"acorn": "^7.1.0",
+		"acorn": "^7.1.1",
 		"acorn-dynamic-import": "^4.0.0",
 		"autoprefixer": "^9.7.3",
 		"babel-eslint": "^10.0.3",
