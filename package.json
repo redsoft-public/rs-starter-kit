@@ -72,7 +72,7 @@
 		"core-js": "^3.5.0",
 		"fibers": "^4.0.2",
 		"inputmask": "^5.0.0",
-		"jquery": "^3.4.1",
+		"jquery": "^3.5.0",
 		"jquery-nice-select": "github:denvolynets/jquery-nice-select",
 		"jquery-validation": "^1.19.1",
 		"jquery.nice-number": "^2.0.1",
